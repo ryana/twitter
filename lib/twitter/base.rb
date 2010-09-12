@@ -370,20 +370,26 @@ module Twitter
 
     private
 
+    VERSION = "1"
+
+    def v p
+      "/#{VERSION}#{p}"
+    end
+
     def perform_get(path, options={})
-      Twitter::Request.get(self, path, options)
+      Twitter::Request.get(self, v(path), options)
     end
 
     def perform_post(path, options={})
-      Twitter::Request.post(self, path, options)
+      Twitter::Request.post(self, v(path), options)
     end
 
     def perform_put(path, options={})
-      Twitter::Request.put(self, path, options)
+      Twitter::Request.put(self, v(path), options)
     end
 
     def perform_delete(path, options={})
-      Twitter::Request.delete(self, path, options)
+      Twitter::Request.delete(self, v(path), options)
     end
 
   end
